@@ -1,4 +1,9 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
+
+class User(BaseModel):
+    name: str
+    email: str
 
 app = FastAPI()
 
@@ -9,3 +14,7 @@ def root():
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+@app.post("/users")
+def create_user(user: User):
+    return {"message": "User created", "user": user}
