@@ -18,3 +18,7 @@ def health():
 @app.post("/users")
 def create_user(user: User):
     return {"message": "User created", "user": user}
+    
+@app.get("/users")
+def get_users():
+    return {"message": "Users retrieved"}
